@@ -1,103 +1,196 @@
-import Image from "next/image";
+import { Button } from "@/components/ui/button"
+import { AcademicFocus } from "@/components/sections/academic-focus"
+import { About } from "@/components/sections/about"
+import { Projects } from "@/components/sections/projects"
+import { Skills } from "@/components/sections/skills"
+import { Strengths } from "@/components/sections/strengths"
+import { FutureDirection } from "@/components/sections/future-direction"
+import Image from "next/image"
+import { Github, Linkedin, FileText, Mail } from "lucide-react"
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <main className="min-h-dvh">
+      <Hero />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      <div className="container mx-auto px-4 py-10 md:py-16 max-w-5xl">
+        <section id="about" aria-label="About" className="scroll-mt-24">
+          <About />
+        </section>
+        <AcademicFocus />
+        <section id="skills" aria-label="Skills" className="scroll-mt-24">
+          <Skills />
+        </section>
+        <section id="projects" aria-label="Projects" className="scroll-mt-24">
+          <Projects />
+        </section>
+        <Strengths />
+        <FutureDirection />
+        <ContactCTA />
+      </div>
+
+      {/* previously: <QuickDockNav /> */}
+    </main>
+  )
+}
+
+function Hero() {
+  return (
+    <header className="relative">
+      <div className="container mx-auto px-4 pt-10 md:pt-16 max-w-5xl">
+        <div className="group rounded-2xl border bg-card/80 backdrop-blur supports-[backdrop-filter]:bg-card/60 border-border shadow-sm transition-all">
+          <div className="p-6 md:p-10">
+            <div className="flex items-center gap-3">
+              <span
+                aria-hidden
+                className="h-2.5 w-2.5 rounded-full bg-primary shadow-[0_0_0_3px_rgba(8,145,178,0.15)]"
+              />
+              <p className="text-sm text-muted-foreground">Open to internships & collaborations</p>
+            </div>
+
+            <div className="mt-5 md:mt-6 grid grid-cols-1 gap-6 md:grid-cols-[1fr_auto] md:items-center">
+              <div>
+                <h1 className="text-pretty text-3xl font-semibold tracking-tight md:text-4xl font-serif">
+                  Shaping My Path in Energy, Power & Innovation.
+                </h1>
+                <p className="mt-3 max-w-2xl text-muted-foreground leading-relaxed">
+                  I’m a B.Tech student in Electrical Engineering at St. Thomas’ College of Engineering & Technology.
+                  Curious about how energy, electronics, and technology shape the world—particularly renewable energy,
+                  power systems, automation, and IoT.
+                </p>
+
+                <div className="mt-5 flex flex-wrap items-center gap-3">
+                  <a href="#projects" className="inline-flex">
+                    <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-5 h-10">
+                      View Projects
+                    </Button>
+                  </a>
+                  <Button asChild variant="outline" className="rounded-full px-5 h-10 bg-transparent">
+                    <a href="#" aria-label="View Resume">
+                      <FileText className="mr-1.5" /> Resume
+                    </a>
+                  </Button>
+                  <Button asChild variant="outline" className="rounded-full px-5 h-10 bg-transparent">
+                    <a href="#" aria-label="Visit GitHub profile">
+                      <Github className="mr-1.5" /> GitHub
+                    </a>
+                  </Button>
+                  <Button asChild variant="outline" className="rounded-full px-5 h-10 bg-transparent">
+                    <a
+                      href="https://www.linkedin.com/in/utsa-ghosh-631b27278/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Open LinkedIn profile"
+                    >
+                      <Linkedin className="mr-1.5" /> LinkedIn
+                    </a>
+                  </Button>
+                  <a href="#contact" className="inline-flex">
+                    <Button variant="ghost" className="rounded-full px-5 h-10">
+                      Contact
+                    </Button>
+                  </a>
+                </div>
+              </div>
+                  <div className="flex flex-col items-center gap-3 md:items-center">
+                  <div className="relative h-40 w-40 sm:h-44 sm:w-44 rounded-full border-spacing-0.5 border-primary shadow-lg overflow-hidden">
+                       <Image
+                           src="/images/profile.jpg"
+                            alt="Portrait of Utsa Ghosh"
+                            fill
+                              sizes="(max-width: 640px) 176px, 192px"
+                                className="object-cover"
+                              priority
+                             />
+                        </div>
+                      <p className="text-lg md:text-xl font-medium text-muted-foreground tracking-tight">
+                      Utsa Ghosh
+                            </p>
+                </div>
+
+            </div>
+
+            <ProfileStrip />
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
+    </header>
+  )
+}
+
+function ProfileStrip() {
+  return (
+    <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
+      <InfoTile
+        title="Academic"
+        value="B.Tech, Electrical Engineering"
+        detail="St. Thomas’ College of Engineering & Technology"
+      />
+      <InfoTile
+        title="Interests"
+        value="Renewables, Power, Automation, IoT"
+        detail="Small steps today → big impact tomorrow"
+      />
+      <InfoTile title="Tools" value="MATLAB, Simulink, ETAP, Arduino" detail="Windows + Ubuntu • Git/GitHub" />
     </div>
-  );
+  )
+}
+
+function InfoTile({
+  title,
+  value,
+  detail,
+}: {
+  title: string
+  value: string
+  detail: string
+}) {
+  return (
+    <div className="rounded-xl border border-border bg-card p-4">
+      <p className="text-xs uppercase tracking-wide text-muted-foreground">{title}</p>
+      <p className="mt-1 text-sm font-medium text-foreground">{value}</p>
+      <p className="mt-1 text-sm text-muted-foreground">{detail}</p>
+    </div>
+  )
+}
+
+function ContactCTA() {
+  return (
+    <section id="contact" className="mt-12 md:mt-16 scroll-mt-24">
+      <div className="rounded-2xl border border-border bg-card p-6 md:p-8 text-center">
+        <h3 className="text-xl font-semibold font-serif text-foreground">Let’s build what matters</h3>
+        <p className="mt-2 text-muted-foreground">
+          I don’t claim to know everything, but I’m learning every day — and one day I hope my work contributes to
+          technologies that truly make a difference.
+        </p>
+        <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+          <a href="#contact" className="inline-flex">
+            <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-5 h-10">
+              Contact Me
+            </Button>
+          </a>
+          <Button asChild variant="outline" className="rounded-full px-5 h-10 bg-transparent">
+            <a href="mailto:your.email@example.com" aria-label="Send email">
+              <Mail className="mr-1.5" /> Email
+            </a>
+          </Button>
+          <Button asChild variant="outline" className="rounded-full px-5 h-10 bg-transparent">
+            <a
+              href="https://www.linkedin.com/in/utsa-ghosh-631b27278/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open LinkedIn"
+            >
+              <Linkedin className="mr-1.5" /> LinkedIn
+            </a>
+          </Button>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// removed dock navbar implementation by making it a no-op so it renders nothing
+function QuickDockNav() {
+  return null
 }
