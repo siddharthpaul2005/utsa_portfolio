@@ -1,3 +1,5 @@
+This is the Portfolio website for Utsa Ghosh developed wiith passion for the next greatest Electrical Engineener
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
